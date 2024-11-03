@@ -57,7 +57,8 @@ export default function Header() {
             </Button>
             <Button variant="secondary" size="sm">
               <LogIn className="mr-2 h-4 w-4" />
-              Login
+              
+              <a href="/login">Login</a>
             </Button>
           </div>
 

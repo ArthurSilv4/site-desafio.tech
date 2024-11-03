@@ -1,99 +1,138 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useState } from 'react'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { ChevronRight, Plus, Info, HelpCircle } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Calendar, Info, HelpCircle } from 'lucide-react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function Main() {
-  const [challengeName, setChallengeName] = useState('')
-  const [challengeDescription, setChallengeDescription] = useState('')
-
-  const handleCreateChallenge = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Here you would typically send this data to your backend
-    console.log('Challenge Created:', { challengeName, challengeDescription })
-    // Reset form
-    setChallengeName('')
-    setChallengeDescription('')
-  }
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slides = [
+    { title: "Welcome to Our Challenge Platform", image: "/placeholder.svg?height=600&width=1200" },
+    { title: "Discover New Challenges", image: "/placeholder.svg?height=600&width=1200" },
+    { title: "Achieve Your Goals", image: "/placeholder.svg?height=600&width=1200" },
+  ]
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      {/* Section 1: Create a 15-day Challenge */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Calendar className="mr-2" />
-          Crie seu Desafio de 15 Dias
-        </h2>
-        <form onSubmit={handleCreateChallenge} className="space-y-4">
-          <Input
-            type="text"
-            placeholder="Nome do Desafio"
-            value={challengeName}
-            onChange={(e) => setChallengeName(e.target.value)}
-            required
+    <main className="flex flex-col min-h-screen">
+      {/* Large Slide Section */}
+      <section className="relative h-screen">
+        <div className="absolute inset-0 bg-black">
+          <img
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].title}
+            className="w-full h-full object-cover opacity-70"
           />
-          <Textarea
-            placeholder="Descreva seu desafio"
-            value={challengeDescription}
-            onChange={(e) => setChallengeDescription(e.target.value)}
-            required
-          />
-          <Button type="submit">Criar Desafio</Button>
-        </form>
-      </section>
-
-      {/* Section 2: About the Project */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <Info className="mr-2" />
-          Sobre o Projeto
-        </h2>
-        <div className="prose max-w-none">
-          <p>
-            Nosso projeto visa inspirar e motivar as pessoas a alcançarem seus objetivos através de desafios de 15 dias.
-            Acreditamos que pequenas ações consistentes podem levar a grandes mudanças.
-          </p>
-          <p>
-            Ao criar um desafio, você se compromete a trabalhar em direção ao seu objetivo por 15 dias consecutivos.
-            Isso ajuda a construir hábitos positivos e a manter o foco em seus objetivos de longo prazo.
-          </p>
-          <Button variant="outline" className="mt-4">Saiba Mais</Button>
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center">{slides[currentSlide].title}</h1>
+          <Button size="lg" className="text-lg px-8 py-6">
+            Start Now
+            <ChevronRight className="ml-2 h-5 w-5" />
+          </Button>
+        </div>
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full ${
+                index === currentSlide ? 'bg-white' : 'bg-gray-400'
+              }`}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))}
         </div>
       </section>
 
-      {/* Section 3: FAQ */}
-      <section>
-        <h2 className="text-2xl font-bold mb-4 flex items-center">
-          <HelpCircle className="mr-2" />
-          Perguntas Frequentes
-        </h2>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Como funciona o desafio de 15 dias?</AccordionTrigger>
-            <AccordionContent>
-              O desafio de 15 dias é uma maneira de focar em um objetivo específico por um período curto mas intenso.
-              Você define uma meta, cria ações diárias e se compromete a segui-las por 15 dias consecutivos.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Posso modificar meu desafio depois de criá-lo?</AccordionTrigger>
-            <AccordionContent>
-              Sim, você pode ajustar seu desafio conforme necessário. No entanto, recomendamos manter a essência
-              do desafio original para manter o foco e a consistência.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>O que acontece após os 15 dias?</AccordionTrigger>
-            <AccordionContent>
-              Após completar os 15 dias, você pode refletir sobre seu progresso, celebrar suas conquistas e
-              decidir se quer continuar com o hábito ou iniciar um novo desafio.
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+      {/* Create Your Challenge Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Create Your Challenge</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <Plus className="w-12 h-12 mb-4 text-primary" />
+              <h3 className="text-xl font-semibold mb-2">Define Your Goal</h3>
+              <p className="text-gray-600">Set a clear and achievable goal for your challenge.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <Plus className="w-12 h-12 mb-4 text-primary" />
+              <h3 className="text-xl font-semibold mb-2">Set the Duration</h3>
+              <p className="text-gray-600">Choose how long your challenge will last.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <Plus className="w-12 h-12 mb-4 text-primary" />
+              <h3 className="text-xl font-semibold mb-2">Invite Friends</h3>
+              <p className="text-gray-600">Make it more fun by challenging your friends.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Learn More Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Learn More</h2>
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <img
+                src="/placeholder.svg?height=400&width=600"
+                alt="Learn More"
+                className="rounded-lg shadow-md"
+              />
+            </div>
+            <div className="md:w-1/2 md:pl-8">
+              <h3 className="text-2xl font-semibold mb-4">Why Choose Our Platform?</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Info className="w-6 h-6 mr-2 text-primary flex-shrink-0" />
+                  <span>Customizable challenges to fit your needs</span>
+                </li>
+                <li className="flex items-start">
+                  <Info className="w-6 h-6 mr-2 text-primary flex-shrink-0" />
+                  <span>Track your progress with detailed analytics</span>
+                </li>
+                <li className="flex items-start">
+                  <Info className="w-6 h-6 mr-2 text-primary flex-shrink-0" />
+                  <span>Connect with a community of like-minded individuals</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>How do I start a challenge?</AccordionTrigger>
+              <AccordionContent>
+                To start a challenge, click the &quot;Start Now&quot; button on the homepage and follow the prompts to set up your challenge details.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>Can I invite friends to join my challenge?</AccordionTrigger>
+              <AccordionContent>
+                Yes! You can invite friends to join your challenge during the setup process or by sharing a unique link after the challenge has been created.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>How long can a challenge last?</AccordionTrigger>
+              <AccordionContent>
+                Challenges can last anywhere from a day to several months, depending on your preferences and goals. You can set the duration when creating your challenge.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
       </section>
     </main>
   )
