@@ -1,64 +1,72 @@
 'use client'
 
-import { createContext, useState } from 'react';
-import { setCookie } from 'nookies'
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import axios from 'axios';
+import { setCookie, parseCookies, destroyCookie } from 'nookies';
 import { useRouter } from 'next/navigation';
 
-type User = {
-  email: string;
-};
-
-type SignInData = {
+interface SignInData {
   email: string;
   password: string;
-};
+}
 
-type AuthContextType = {
-  isAuthenticated: boolean;
-  user: User | null;
+interface AuthContextType {
+  token: string | null;
   signIn: (data: SignInData) => Promise<void>;
-};
+  signOut: () => void;
+}
 
-export const AuthContext = createContext({} as AuthContextType);
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const isAuthenticated = !!user;
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const { 'desafio.tech-token': storedToken } = parseCookies();
+
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
 
   async function signIn({ email, password }: SignInData) {
     try {
-      const response = await fetch('https://localhost:7092/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post('https://localhost:7092/auth/login', {
+        email,
+        password,
       });
 
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-
-      const data = await response.json();
-      setCookie(undefined, 'desafio.tech-token', data.token, {
+      const { token } = response.data;
+      setCookie(undefined, 'desafio.tech-token', token, {
         maxAge: 60 * 60 * 2, // 2 hours
       });
 
-      setUser(
-        data.user
-      );
-
+      setToken(token);
       router.push('/dashboard');
 
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }
+
+  function signOut() {
+    destroyCookie(undefined, 'desafio.tech-token');
+    setToken(null);
+    router.push('/login');
+  }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn }}>
+    <AuthContext.Provider value={{ token, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
+  }
+  return context;
+};
