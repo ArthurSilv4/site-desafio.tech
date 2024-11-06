@@ -49,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         data.user
       );
 
-      router.push('/');
+      router.push('/dashboard');
 
     } catch (error) {
       console.error('Error:', error);

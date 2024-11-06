@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator"
 import { AuthContext } from '@/contexts/AuthContext'
 
 
-const LoginPage = () => {
+const SignInPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -151,4 +151,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage;
+export default SignInPage;

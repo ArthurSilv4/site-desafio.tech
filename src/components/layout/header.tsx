@@ -28,9 +28,7 @@ export default function Header() {
               <line x1="9" y1="9" x2="9.01" y2="9" />
               <line x1="15" y1="9" x2="15.01" y2="9" />
             </svg>
-            <Link href={'/'} className="hover:underline">
-              <span className="font-bold text-lg">Desafio.Tech</span>
-            </Link>
+            <span className="font-bold text-lg">Desafio.Tech</span>
           </Link>
 
           <nav className="hidden md:flex space-x-4">
@@ -64,7 +62,7 @@ export default function Header() {
               </Button>
             </Link>
             
-            <Link href={"/login"}>
+            <Link href={"/signIn"}>
               <Button variant="secondary" size="sm">
                 <LogIn className="mr-2 h-4 w-4" />
                 Login
@@ -114,7 +112,7 @@ export default function Header() {
                 </Button>
               </Link>
 
-              <Link href={'login'}>
+              <Link href={'/signIn'}>
                 <Button variant="secondary" size="sm">
                   <LogIn className="mr-2 h-4 w-4" />
                   Login
