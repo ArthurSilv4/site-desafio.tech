@@ -1,20 +1,30 @@
 'use client'
-import { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Eye, EyeOff, Github, User } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { AuthContext } from '@/contexts/AuthContext'
 
-export default function Login() {
-  const [showPassword, setShowPassword] = useState(false)
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    // Handle login logic here
-    console.log('Login submitted')
-  }
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const { signIn } = useContext(AuthContext);
+
+
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    if (typeof window !== 'undefined') {
+      await signIn({ email, password });
+    }
+
+  };
 
   const handleGoogleLogin = () => {
     // Handle Google login logic here
@@ -41,12 +51,14 @@ export default function Login() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
                 required
               />
@@ -57,6 +69,8 @@ export default function Login() {
                 <Input
                   id="password"
                   type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
                 />
@@ -136,3 +150,5 @@ export default function Login() {
     </div>
   )
 }
+
+export default LoginPage;
