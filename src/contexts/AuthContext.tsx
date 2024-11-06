@@ -45,9 +45,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         maxAge: 60 * 60 * 2, // 2 hours
       });
 
-      setUser({
-        email: data.email,
-      });
+      setUser(
+        data.user
+      );
 
       router.push('/');
 
