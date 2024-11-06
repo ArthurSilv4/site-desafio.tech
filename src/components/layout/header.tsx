@@ -28,38 +28,49 @@ export default function Header() {
               <line x1="9" y1="9" x2="9.01" y2="9" />
               <line x1="15" y1="9" x2="15.01" y2="9" />
             </svg>
-            <span className="font-bold text-lg">Desafio.Tech</span>
+            <Link href={'/'} className="hover:underline">
+              <span className="font-bold text-lg">Desafio.Tech</span>
+            </Link>
           </Link>
 
           <nav className="hidden md:flex space-x-4">
-            <Link href="/saiba-mais" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Página Inicial
             </Link>
-            <Link href="/crie-seu-desafio" className="hover:underline">
+            <Link href="/crieSeuDesafio" className="hover:underline">
               Crie seu Desafio
             </Link>
-            <Link href="/crie-seu-desafio" className="hover:underline">
+            <Link href="/saibaMais" className="hover:underline">
               Saiba mais
             </Link>
-            <Link href="/crie-seu-desafio" className="hover:underline">
+            <Link href="/perguntasFrequentes" className="hover:underline">
               Perguntas Frequentes
             </Link>
           </nav>
 
           <div className="hidden md:flex space-x-2">
-            <Button variant="secondary" size="sm">
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Feedback
-            </Button>
-            <Button variant="secondary" size="sm">
-              <Heart className="mr-2 h-4 w-4" />
-              Apoie
-            </Button>
-            <Button variant="secondary" size="sm">
-              <LogIn className="mr-2 h-4 w-4" />
-              
-              <a href="/login">Login</a>
-            </Button>
+            
+            <Link href={""}>
+              <Button variant="secondary" size="sm">
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Feedback
+              </Button>
+            </Link>
+            
+            <Link href={''}>
+              <Button variant="secondary" size="sm">
+                <Heart className="mr-2 h-4 w-4" />
+                Apoie
+              </Button>
+            </Link>
+            
+            <Link href={"/login"}>
+              <Button variant="secondary" size="sm">
+                <LogIn className="mr-2 h-4 w-4" />
+                Login
+              </Button>
+            </Link>
+            
           </div>
 
           <Button
@@ -75,32 +86,40 @@ export default function Header() {
         {isMenuOpen && (
           <div className="mt-4 md:hidden">
             <nav className="flex flex-col space-y-2">
-              <Link href="/saiba-mais" className="hover:underline">
+              <Link href="/" className="hover:underline">
                 Página Inicial
               </Link>
-              <Link href="/crie-seu-desafio" className="hover:underline">
+              <Link href="/crieSeuDesafio" className="hover:underline">
                 Crie seu Desafio
               </Link>
-              <Link href="/crie-seu-desafio" className="hover:underline">
+              <Link href="/saibaMais" className="hover:underline">
                 Saiba mais
               </Link>
-              <Link href="/crie-seu-desafio" className="hover:underline">
+              <Link href="/perguntasFrequentes" className="hover:underline">
                 Perguntas Frequentes
               </Link>
             </nav>
             <div className="mt-4 flex flex-col space-y-2">
-              <Button variant="secondary" size="sm">
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Feedback
-              </Button>
-              <Button variant="secondary" size="sm">
-                <Heart className="mr-2 h-4 w-4" />
-                Apoie
-              </Button>
-              <Button variant="secondary" size="sm">
-                <LogIn className="mr-2 h-4 w-4" />
-                Login
-              </Button>
+              <Link href={''}>
+                <Button variant="secondary" size="sm">
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Feedback
+                </Button>
+              </Link>
+              
+              <Link href={''}>
+                <Button variant="secondary" size="sm">
+                  <Heart className="mr-2 h-4 w-4" />
+                  Apoie
+                </Button>
+              </Link>
+
+              <Link href={'login'}>
+                <Button variant="secondary" size="sm">
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Login
+                </Button>
+              </Link>
             </div>
           </div>
         )}
