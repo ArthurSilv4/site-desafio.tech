@@ -9,12 +9,18 @@ import { Separator } from "@/components/ui/separator"
 import { AuthContext } from '@/contexts/AuthContext'
 
 
-const SignInPage = () => {
+const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const { signIn } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error('AuthContext deve ser usado dentro de um AuthProvider');
+  }
+
+  const { signIn } = authContext;
 
 
   const handleLogin = async (event: React.FormEvent) => {
@@ -23,7 +29,6 @@ const SignInPage = () => {
     if (typeof window !== 'undefined') {
       await signIn({ email, password });
     }
-
   };
 
   const handleGoogleLogin = () => {
@@ -151,4 +156,4 @@ const SignInPage = () => {
   )
 }
 
-export default SignInPage;
+export default SignIn;
