@@ -41,6 +41,7 @@ export default function Dashboard() {
     challengeDates: [],
     completed: false,
   });
+  const [editingChallenge, setEditingChallenge] = useState<Challenge | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -131,6 +132,37 @@ export default function Dashboard() {
     }
   };
 
+  const handleEditClick = (challenge: Challenge) => {
+    setEditingChallenge(challenge);
+  };
+
+  const handleEditInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (editingChallenge) {
+      setEditingChallenge({ ...editingChallenge, [name]: value });
+    }
+  };
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (editingChallenge) {
+      try {
+        const response = await axios.put(`https://localhost:7092/challenges/edit/${editingChallenge.id}`, editingChallenge, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setChallenges(challenges.map(challenge => 
+          challenge.id === editingChallenge.id ? response.data : challenge
+        ));
+        setEditingChallenge(null);
+        console.log('Challenge updated:', response.data);
+      } catch (error) {
+        console.error('Error updating challenge:', error);
+      }
+    }
+  };
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -198,27 +230,66 @@ export default function Dashboard() {
         <ul>
           {challenges.map((challenge) => (
             <li key={challenge.id}>
-              <h3>{challenge.title}</h3>
-              <p>{challenge.description}</p>
-              <p>Start Date: {challenge.startDate}</p>
-              <p>End Date: {challenge.endDate}</p>
-              <p>Challenge Dates:</p>
-              <ul>
-                {challenge.challengeDates.map((date, index) => (
-                  <li key={index}>{date}</li>
-                ))}
-              </ul>
-              <p>
-                Completed: 
-                <input 
-                  type="checkbox" 
-                  checked={challenge.completed} 
-                  onChange={(e) => handleEdit(challenge.id, e.target.checked)} 
-                />
-              </p>
-              <button className='bg-red-200' onClick={() => handleDelete(challenge.id)}>Delete</button>
-              <br />
-              <br />
+              {editingChallenge && editingChallenge.id === challenge.id ? (
+                <form onSubmit={handleEditSubmit}>
+                  <div>
+                    <label htmlFor="editTitle">Title:</label>
+                    <input
+                      type="text"
+                      id="editTitle"
+                      name="title"
+                      value={editingChallenge.title}
+                      onChange={handleEditInputChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="editDescription">Description:</label>
+                    <input
+                      type="text"
+                      id="editDescription"
+                      name="description"
+                      value={editingChallenge.description || ''}
+                      onChange={handleEditInputChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="editStartDate">Start Date:</label>
+                    <input
+                      type="date"
+                      id="editStartDate"
+                      name="startDate"
+                      value={editingChallenge.startDate}
+                      onChange={handleEditInputChange}
+                    />
+                  </div>
+                  <button type="submit">Save</button>
+                </form>
+              ) : (
+                <>
+                  <h3>{challenge.title}</h3>
+                  <p>{challenge.description}</p>
+                  <p>Start Date: {challenge.startDate}</p>
+                  <p>End Date: {challenge.endDate}</p>
+                  <p>Challenge Dates:</p>
+                  <ul>
+                    {challenge.challengeDates.map((date, index) => (
+                      <li key={index}>{date}</li>
+                    ))}
+                  </ul>
+                  <p>
+                    Completed: 
+                    <input 
+                      type="checkbox" 
+                      checked={challenge.completed} 
+                      onChange={(e) => handleEdit(challenge.id, e.target.checked)} 
+                    />
+                  </p>
+                  <button className='bg-red-200' onClick={() => handleDelete(challenge.id)}>Delete</button>
+                  <button className='bg-blue-200' onClick={() => handleEditClick(challenge)}>Edit</button>
+                  <br />
+                  <br />
+                </>
+              )}
             </li>
           ))}
         </ul>
