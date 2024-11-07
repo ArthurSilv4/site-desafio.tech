@@ -52,7 +52,6 @@ export default function Dashboard() {
           },
         });
         setUserData(response.data);
-        console.log('User data:', response.data);
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -66,7 +65,6 @@ export default function Dashboard() {
           },
         });
         setChallenges(response.data);
-        console.log('User challenges:', response.data);
       } catch (error) {
         console.error('Error fetching user challenges:', error);
       }
@@ -95,8 +93,8 @@ export default function Dashboard() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log('Challenge created:', response.data);
-      // Atualize a interface do usuário conforme necessário
+      setChallenges([...challenges, response.data]);
+
     } catch (error) {
       console.error('Error creating challenge:', error);
     }
@@ -110,7 +108,6 @@ export default function Dashboard() {
         },
       });
       setChallenges(challenges.filter(challenge => challenge.id !== id));
-      console.log('Challenge deleted:', id);
     } catch (error) {
       console.error('Error deleting challenge:', error);
     }
@@ -126,7 +123,6 @@ export default function Dashboard() {
       setChallenges(challenges.map(challenge => 
         challenge.id === id ? { ...challenge, completed: response.data.completed } : challenge
       ));
-      console.log('Challenge updated:', response.data);
     } catch (error) {
       console.error('Error updating challenge:', error);
     }
@@ -156,7 +152,6 @@ export default function Dashboard() {
           challenge.id === editingChallenge.id ? response.data : challenge
         ));
         setEditingChallenge(null);
-        console.log('Challenge updated:', response.data);
       } catch (error) {
         console.error('Error updating challenge:', error);
       }
@@ -258,7 +253,7 @@ export default function Dashboard() {
                       type="date"
                       id="editStartDate"
                       name="startDate"
-                      value={editingChallenge.startDate}
+                      value={editingChallenge?.startDate || ''}
                       onChange={handleEditInputChange}
                     />
                   </div>
@@ -268,12 +263,12 @@ export default function Dashboard() {
                 <>
                   <h3>{challenge.title}</h3>
                   <p>{challenge.description}</p>
-                  <p>Start Date: {challenge.startDate}</p>
-                  <p>End Date: {challenge.endDate}</p>
+                  <p>Start Date: {new Date(challenge.startDate).toLocaleDateString()}</p>
+                  <p>End Date: {new Date(challenge.endDate).toLocaleDateString()}</p>
                   <p>Challenge Dates:</p>
                   <ul>
                     {challenge.challengeDates.map((date, index) => (
-                      <li key={index}>{date}</li>
+                      <li key={index}>{new Date(date).toLocaleDateString()}</li>
                     ))}
                   </ul>
                   <p>
