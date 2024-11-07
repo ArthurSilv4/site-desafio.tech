@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Eye, EyeOff, Github } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,14 +8,28 @@ import { Label } from "@/components/ui/label"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Checkbox } from "@/components/ui/checkbox"
+import { AuthContext } from '@/contexts/AuthContext'
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false)
+  const authContext = useContext(AuthContext)
+  if (!authContext) {
+    throw new Error('AuthContext must be used within an AuthProvider')
+  }
+  const { signUp } = authContext
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    // Handle sign up logic here
-    console.log('Sign up submitted')
+    const formData = new FormData(event.currentTarget)
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
+
+    try {
+      await signUp({ email, password })
+      console.log('Sign up successful')
+    } catch (error) {
+      console.error('Failed to sign up', error)
+    }
   }
 
   const handleGoogleSignUp = () => {
@@ -43,6 +57,7 @@ export default function SignUp() {
               <Label htmlFor="name">Nome completo</Label>
               <Input
                 id="name"
+                name="name"
                 type="text"
                 placeholder="Seu nome completo"
                 required
@@ -52,6 +67,7 @@ export default function SignUp() {
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="seu@email.com"
                 required
@@ -62,6 +78,7 @@ export default function SignUp() {
               <div className="relative">
                 <Input
                   id="password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   required
