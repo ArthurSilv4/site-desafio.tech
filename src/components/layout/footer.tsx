@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Linkedin } from "lucide-react"
+import Links from "../links/links"
 
 export default function Footer() {
   return (
@@ -9,9 +10,9 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Criador do Desafio.Tech</h3>
             <p>Arthur De Souza</p>
-            <Link 
-              href="https://www.linkedin.com/in/joaodasilva" 
-              target="_blank" 
+            <Link
+              href="https://www.linkedin.com/in/joaodasilva"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 hover:underline"
             >
@@ -21,12 +22,7 @@ export default function Footer() {
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Links do Site</h3>
-            <nav className="flex flex-col space-y-2">
-              <Link href="/" className="hover:underline">Página Inicial</Link>
-              <Link href="/sobre" className="hover:underline">Crie seu Desafio</Link>
-              <Link href="/servicos" className="hover:underline">Saiba mais</Link>
-              <Link href="/contato" className="hover:underline">Perguntas Frequentes</Link>
-            </nav>
+            <Links className="flex flex-col space-y-2" />
           </div>
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Informações Legais</h3>
