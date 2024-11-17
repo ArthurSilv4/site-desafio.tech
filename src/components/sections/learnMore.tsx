@@ -7,13 +7,14 @@ export function LearnMore(){
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Learn More</h2>
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="md:w-1/2 mb-8 md:mb-0">
+            <div className="w-full md:w-1/2 mb-8 md:mb-0">
               <Image
-                src="/placeholder.svg"
-                alt="Learn More"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-md"
+              src="/placeholder.svg"
+              alt="Learn More"
+              layout="responsive"
+              width={600}
+              height={400}
+              className="rounded-lg shadow-md"
               />
             </div>
             <div className="md:w-1/2 md:pl-8">
