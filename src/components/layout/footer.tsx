@@ -4,7 +4,7 @@ import Links from "../links/links"
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground py-8">
+    <footer className="bg-background text-primary-foreground py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">

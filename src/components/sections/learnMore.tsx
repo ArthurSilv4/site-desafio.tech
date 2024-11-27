@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function LearnMore(){
   return(
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center">Saiba Mais Sobre Nós</h2>
           <div className="flex flex-col md:flex-row items-center justify-between">

@@ -16,29 +16,29 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ className }) => {
   return (
     <div className={className}>
       <Link href={''}>
-        <Button variant="secondary" size="sm">
-          <MessageSquare className="mr-2 h-4 w-4" />
+        <Button size="sm">
+          <MessageSquare className="mr-2 h-4 w-4 text-[#009379]" />
           Feedback
         </Button>
       </Link>
 
       <Link href={''}>
-        <Button variant="secondary" size="sm">
-          <Heart className="mr-2 h-4 w-4" />
+        <Button size="sm">
+          <Heart className="mr-2 h-4 w-4 text-[#FF6250]" />
           Apoie
         </Button>
       </Link>
 
       {isLoggedIn ? (
         <Link href={'/dashboard'}>
-          <Button variant="secondary" size="sm">
+          <Button size="sm">
             <LogIn className="mr-2 h-4 w-4" />
             Dashboard
           </Button>
         </Link>
       ) : (
         <Link href={'/signIn'}>
-          <Button variant="secondary" size="sm">
+          <Button size="sm" >
             <LogIn className="mr-2 h-4 w-4" />
             Login
           </Button>
