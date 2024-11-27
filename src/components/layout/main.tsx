@@ -1,4 +1,4 @@
-import { Slide } from '../sections/slide'
+import { Home } from '../sections/home'
 import { CreateYourChallenge } from '../sections/createYourChallenge'
 import { LearnMore } from '../sections/learnMore'
 import { FrequentlyAskedQuestions } from '../sections/frequentlyAskedQuestions'
@@ -6,7 +6,7 @@ import { FrequentlyAskedQuestions } from '../sections/frequentlyAskedQuestions'
 export default function Main() {
   return (
     <main className="flex flex-col min-h-screen">
-      <Slide />
+      <Home />
       <CreateYourChallenge />
       <LearnMore />
       <FrequentlyAskedQuestions />

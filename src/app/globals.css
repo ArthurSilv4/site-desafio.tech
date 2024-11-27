@@ -5,7 +5,7 @@
   :root {
     --background: 0 0% 16.9%;           /* cinza */ 
     --foreground: 240 10% 3.9%;
-    --card: 0 100% 50%;
+    --card: 0 0% 20%;                   /* cinza mais claro*/
     --card-foreground: 240 10% 3.9%;
     --popover: 0 100% 50%;
     --popover-foreground: 240 10% 3.9%;
