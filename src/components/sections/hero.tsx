@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-export default function Home() {
+export default function Hero() {
   return (
     <section className="w-full h-screen bg-background py-12 md:py-24 lg:py-32 flex">
       <div className="container px-4 md:px-6 m-auto">
