@@ -7,9 +7,9 @@ import {
 
 export function FrequentlyAskedQuestions() {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-background text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Perguntas Frequentes</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center tracking-tighter">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="w-full max-w-2xl mx-auto">
           <AccordionItem value="item-1">
             <AccordionTrigger>Como inicio um desafio?</AccordionTrigger>

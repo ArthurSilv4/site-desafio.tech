@@ -1,11 +1,13 @@
 import Link from "next/link"
 import { Linkedin } from "lucide-react"
 import Links from "../links/links"
+import { Separator } from "@radix-ui/react-select"
 
 export default function Footer() {
   return (
     <footer className="bg-background text-primary-foreground py-8">
       <div className="container mx-auto px-4">
+        <Separator className="pt-8 border-t border-primary-foreground/10 text-center" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Criador do Desafio.Tech</h3>
