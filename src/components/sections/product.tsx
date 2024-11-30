@@ -3,7 +3,7 @@ import { Card } from "../ui/card";
 
 export default function Product() {
   return (
-    <section className="w-full min-h-screen text-white py-12 md:py-24 lg:py-32 flex">
+    <section className="w-full text-white py-12 md:py-24 lg:py-32 flex">
       <div className="container min-h-full m-auto px-4">
         <Card className="bg-[#FDF5DF] h-full flex items-end justify-center border-none" >
           <div className="h-full w-full flex items-end justify-center ">
