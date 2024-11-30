@@ -43,8 +43,8 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center">
+      <Card className="w-full max-w-md text-white">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Criar uma conta</CardTitle>
           <CardDescription>
@@ -89,9 +89,9 @@ export default function SignUp() {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-500" />
+                    <EyeOff className="h-4 w-4 text-gray-400" />
                   ) : (
-                    <Eye className="h-4 w-4 text-gray-500" />
+                    <Eye className="h-4 w-4 text-gray-400" />
                   )}
                 </button>
               </div>
@@ -153,9 +153,9 @@ export default function SignUp() {
           </div>
         </CardContent>
         <CardFooter className="flex justify-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-400">
             Já tem uma conta?{' '}
-            <a href="/login" className="text-primary hover:underline">
+            <a href="/signIn" className="text-[#FFDF90] hover:underline">
               Faça login
             </a>
           </p>

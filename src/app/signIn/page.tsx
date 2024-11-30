@@ -47,8 +47,8 @@ const SignIn = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <Card className="w-full max-w-md">
+    <main className="min-h-screen flex items-center justify-center">
+      <Card className="w-full max-w-md text-white">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Login</CardTitle>
           <CardDescription>
@@ -85,9 +85,9 @@ const SignIn = () => {
                   className="absolute right-3 top-1/2 transform -translate-y-1/2"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-4 w-4 text-gray-500" />
+                    <EyeOff className="h-4 w-4 text-gray-400" />
                   ) : (
-                    <Eye className="h-4 w-4 text-gray-500" />
+                    <Eye className="h-4 w-4 text-gray-400" />
                   )}
                 </button>
               </div>
@@ -144,15 +144,15 @@ const SignIn = () => {
           </div>
         </CardContent>
         <CardFooter className="flex justify-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-400">
             Não tem uma conta?{' '}
-            <a href="/signUp" className="text-primary hover:underline">
+            <a href="/signUp" className="text-[#FFDF90] hover:underline">
               Cadastre-se
             </a>
           </p>
         </CardFooter>
       </Card>
-    </div>
+    </main>
   )
 }
 
