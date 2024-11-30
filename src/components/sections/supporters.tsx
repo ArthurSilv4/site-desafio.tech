@@ -19,7 +19,7 @@ const person = [
 ];
 
 
-export default function Supports() {
+export default function Supporters() {
   return (
     <section className="w-full text-white py-12 md:py-24 lg:py-32">
       <div className="container overflow-x-auto whitespace-nowrap m-auto">
