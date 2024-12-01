@@ -26,7 +26,7 @@ export function UserFeedback(){
       <div className="max-w-3xl mx-auto">
         <div className="bg-[#ffedc3] rounded-2xl p-8 md:p-12">
           <div className="text-center space-y-6">
-            <span className="text-4xl md:text-5xl font-serif">''</span>
+            <span className="text-4xl md:text-5xl font-serif">,,</span>
             <blockquote className="text-lg md:text-xl text-zinc-800 leading-relaxed">
               {randomFeedback.comentario}
             </blockquote>

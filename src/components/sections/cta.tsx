@@ -9,11 +9,11 @@ export default function Cta() {
         <div className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-4xl md:text-5xl font-bold text-white">Questions?</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-white">Let's talk</h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">Let&apos;s talk</h3>
           </div>
           <p className="text-zinc-400">
             Contact us through our 24/7 live chat.<br />
-            We're always happy to help!
+            We&apos;re always happy to help!
           </p>
           <Button 
             className="bg-[#ffd875] text-black hover:bg-[#ffc875] px-8"
