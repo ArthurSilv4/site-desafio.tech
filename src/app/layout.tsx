@@ -5,6 +5,7 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Analytics />
+          <SpeedInsights />
           <Footer />
         </AuthProvider>
       </body>
