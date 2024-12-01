@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import SvgCharts from "../svgs/charts"
 
 export default function Hero() {
   return (
@@ -8,10 +9,10 @@ export default function Hero() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Transforme desafios em soluções
+                Transforme desafios em soluções reais
               </h1>
               <p className="max-w-[600px] text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Transforme ideias em realidade! Participe do desafio, mostre suas habilidades e cause o impacto que só você pode criar.
+                Encare desafios, crie soluções inovadoras e desenvolva suas habilidades enquanto causa um impacto de verdade
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -23,18 +24,8 @@ export default function Hero() {
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-[600px] p-4">
               <div className="overflow-hidden rounded-lg bg-card p-4 shadow-2xl">
-                <div className="grid gap-8">
-                  <div className="grid grid-cols-2 gap-8">
-                    <div className="h-40 rounded-lg bg-background">
-                      1
-                    </div>
-                    <div className="h-40 rounded-lg bg-background">
-                      2
-                    </div>
-                  </div>
-                  <div className="h-40 rounded-lg bg-background">
-                    3
-                  </div>
+                <div className="w-full h-full overflow-hidden">
+                  <SvgCharts className="w-full h-full object-contain mx-auto" />
                 </div>
               </div>
             </div>

@@ -7,20 +7,24 @@ type FAQItem = {
 
 const faqData: FAQItem[] = [
   {
-    question: "How secure is Wallet?",
-    answer: "Wallet uses state-of-the-art encryption and security measures to protect your data. We never store your sensitive information on our servers."
+    question: "O que é o Desafioo.tech",
+    answer: "O Desafioo.tech é uma plataforma open-source que oferece a oportunidade de resolver problemas reais, desenvolver soluções inovadoras e aprimorar suas habilidades em desafios práticos. É o lugar ideal para quem busca aprender, se desafiar e crescer."
   },
   {
-    question: "Can I use Wallet internationally?",
-    answer: "Yes, Wallet is designed for global use. You can store and manage cards and passes from any country."
+    question: "Quem pode participar da plataforma?",
+    answer: "Qualquer pessoa, independentemente do nível de experiência, pode participar. O Desafioo.tech é para todos que desejam resolver problemas reais e expandir seus conhecimentos."
   },
   {
-    question: "Is there a limit to how many cards I can store?",
-    answer: "There's no limit to the number of cards you can store in Wallet. Add as many as you need!"
+    question: "Como funcionam os desafios?",
+    answer: "Os desafios são apresentados de forma prática e dinâmica, abordando problemas reais que exigem soluções criativas. Durante 15 dias, você trabalhará para resolver um problema real, desenvolvendo suas habilidades enquanto cria soluções inovadoras."
   },
   {
-    question: "How do I add a new card to Wallet?",
-    answer: "Simply tap the '+' button in the app, then either scan your card or enter the details manually. It's quick and easy!"
+    question: "O Desafioo.tech é gratuito?",
+    answer: "Sim! A plataforma é totalmente gratuita, oferecendo todos os recursos necessários para que você participe e aprenda sem custo algum."
+  },
+  {
+    question: "Como posso compartilhar minhas soluções?",
+    answer: "Você pode compartilhar suas soluções diretamente na plataforma, interagindo com outros participantes e mostrando como você resolveu os desafios propostos. Além disso, você pode compartilhar suas soluções em suas redes sociais e portfólios."
   }
 ]
 
@@ -42,7 +46,7 @@ export default function FAQ() {
   return (
     <section className="w-full py-16 px-4">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">Perguntas Frequentes</h2>
         <Accordion type="single" collapsible className="space-y-4">
           {faqData.map((item, index) => (
             <FAQItem key={index} item={item} />

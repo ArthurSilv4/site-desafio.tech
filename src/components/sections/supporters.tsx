@@ -2,20 +2,29 @@ import { Separator } from "@radix-ui/react-select";
 
 const person = [
   {
-    name: "Alice"
+    name: "Arthur"
   },
   {
-    name: "Bob"
+    name: "Gustavo"
   },
   {
-    name: "Charlie"
+    name: "Lucas"
   },
   {
-    name: "David"
+    name: "Matheus"
   },
   {
-    name: "Eve"
-  }
+    name: "Pedro"
+  },
+  {
+    name: "Rafael"
+  },
+  {
+    name: "Rodrigo"
+  },
+  {
+    name: "Vitor"
+  },
 ];
 
 

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className=" text-white flex items-center gap-2">
             <Logo />
-            <Link href={"linkedin"}>
+            <Link href={"https://www.linkedin.com/in/arthur-souza-dev/"}>
               <span className="text-zinc-400 text-sm">by Arthur</span>
             </Link>
           </div>
@@ -18,13 +18,13 @@ export default function Footer() {
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-zinc-400">
             <span>&copy; Desafioo.Tech {new Date().getFullYear()} </span>
             <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy policy
+              Política de Privacidade
             </Link>
             <Link href="/cookies" className="hover:text-white transition-colors">
-              Cookies policy
+              Política de Cookies
             </Link>
             <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of use
+              Termos de Uso
             </Link>
           </nav>
         </div>

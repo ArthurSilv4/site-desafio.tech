@@ -12,8 +12,8 @@ export function Feature() {
               <Calendar className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-white text-lg font-medium mb-1">Desafie-se pelos próximos 15 dias</h3>
-              <p className="text-zinc-400">Aceite o desafio e supere-se nos próximos 15 dias</p>
+              <h3 className="text-white text-lg font-medium mb-1">Desafie-se a resolver problemas nos próximos 15 dias</h3>
+              <p className="text-zinc-400">Encare desafios reais, desenvolva suas habilidades e resolva problemas concretos em apenas 15 dias</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -21,8 +21,8 @@ export function Feature() {
               <Wallet className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-white text-lg font-medium mb-1">É de graça</h3>
-              <p className="text-zinc-400">Acesse todos os recursos sem nenhum custo</p>
+              <h3 className="text-white text-lg font-medium mb-1">Totalmente gratuito</h3>
+              <p className="text-zinc-400">Acesse todos os recursos sem nenhum custo e aproveite ao máximo cada oportunidade</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -30,8 +30,8 @@ export function Feature() {
               <FolderKanban className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 className="text-white text-lg font-medium mb-1">Crie seu portfolio</h3>
-              <p className="text-zinc-400">Mostre seus projetos e habilidades para o mundo</p>
+              <h3 className="text-white text-lg font-medium mb-1">Compartilhe suas soluções</h3>
+              <p className="text-zinc-400">Mostre como você resolve desafios reais com soluções inovadoras e práticas, impactando diretamente os resultados</p>
             </div>
           </div>
         </div>
