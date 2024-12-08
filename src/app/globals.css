@@ -3,31 +3,31 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: 0 0% 16.9%;           /* cinza */ 
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 20%;                   /* cinza mais claro*/
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 100% 50%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 258 67.6% 81.2%;           /* roxo */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 100% 50%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 0 100% 50%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 258 67.6% 81.2%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 16.9%;
-    --input: 0 0% 16.9%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 0 100% 50%;
-    --chart-2: 0 100% 50%;
-    --chart-3: 0 100% 50%;
-    --chart-4: 0 100% 50%;
-    --chart-5: 0 100% 50%;
-    --radius: 15px;
+    --background: 0 0% 16.9%;                     /* cinza */ 
+    --foreground: 240 10% 3.9%;                   /* cinza escuro */
+    --card: 0 0% 20%;                             /* cinza mais claro */
+    --card-foreground: 0 0% 100%;                 /* branco */
+    --popover: 0 100% 50%;                        /* vermelho */
+    --popover-foreground: 240 10% 3.9%;           /* cinza escuro */
+    --primary: 258 67.6% 81.2%;                   /* roxo */
+    --primary-foreground: 0 0% 98%;               /* quase branco */
+    --secondary: 0 100% 50%;                      /* vermelho */
+    --secondary-foreground: 240 5.9% 10%;         /* cinza escuro */
+    --muted: 0 100% 50%;                          /* vermelho */
+    --muted-foreground: 240 3.8% 46.1%;           /* cinza */
+    --accent: 258 67.6% 81.2%;                    /* roxo */
+    --accent-foreground: 240 5.9% 10%;            /* cinza escuro */
+    --destructive: 0 84.2% 60.2%;                 /* vermelho */
+    --destructive-foreground: 0 0% 98%;           /* quase branco */
+    --border: 0 0% 16.9%;                         /* cinza */
+    --input: 0 0% 16.9%;                          /* cinza */
+    --ring: 240 10% 3.9%;                         /* cinza escuro */
+    --chart-1: 48 100% 80%;                       /* amarelo */
+    --chart-2: 168 100% 28.6%;                    /* verde */
+    --chart-3: 16 100% 66.7%;                     /* laranja */
+    --chart-4: 214 100% 66.7%;                    /* azul */
+    --chart-5: 258 67.6% 81.2%;                   /* roxo */
+    --radius: 15px;                              
   }
 }
 @layer base {
@@ -35,6 +35,9 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-white;
+  }
+  :root {
+    --foreground: 0 0% 100%; /* branco */
   }
 }
