@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation"
 import { useAuth } from "@/contexts/AuthContext"
 import { User } from "lucide-react"
 import Link from "next/link"
+import { SidebarTrigger } from "../ui/sidebar"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,15 +23,23 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between gap-2">
 
-            <div className="flex-1 max-w-xs flex items-center relative">
-              <div className="absolute left-4">
-                <Search className="text-[#555555]" />
+
+            <div className="flex items-center gap-4">
+              <SidebarTrigger className="bg-[#2A2A2A] text-[#555555] shadow-inner shadow-[#222222] focus:outline-none focus:ring-2 focus:ring-primary" />
+
+
+              <div className="flex-1 max-w-xs flex items-center relative">
+
+
+                <div className="absolute left-4">
+                  <Search className="text-[#555555]" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="w-full pl-12 pr-4 py-2 rounded-full bg-[#2A2A2A] text-[#555555] shadow-inner shadow-[#222222] focus:outline-none focus:ring-2 focus:ring-primary"
+                />
               </div>
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full pl-12 pr-4 py-2 rounded-full bg-[#2A2A2A] text-[#555555] shadow-inner shadow-[#222222] focus:outline-none focus:ring-2 focus:ring-primary"
-              />
             </div>
 
             <div className="flex gap-5">

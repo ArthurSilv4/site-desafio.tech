@@ -6,6 +6,8 @@ import Header from "@/components/layout/header";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import SideBarr from "@/components/sideBar/sideBar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,11 +36,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Header />
-          {children}
-          <Analytics />
-          <SpeedInsights />
-          <Footer />
+          <SidebarProvider>
+
+            <SideBarr />
+            <div className="m-auto w-full h-full">
+              
+              <Header />
+
+              {children}
+              <Analytics />
+              <SpeedInsights />
+              <Footer />
+            </div>
+
+          </SidebarProvider>
+
         </AuthProvider>
       </body>
     </html>
