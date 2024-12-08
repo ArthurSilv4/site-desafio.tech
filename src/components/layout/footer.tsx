@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link"
-import { Separator } from "@radix-ui/react-select"
+import { Separator } from "@radix-ui/react-separator"
 import { Logo } from "../logo/logo"
 import { useAuth } from "@/contexts/AuthContext";
 import { usePathname } from "next/navigation";
