@@ -1,10 +1,19 @@
+'use client'
+
 import Link from "next/link"
 import { Separator } from "@radix-ui/react-select"
 import { Logo } from "../logo/logo"
+import { useAuth } from "@/contexts/AuthContext";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+
+  const { isLoggedIn } = useAuth();
+  const pathname = usePathname();
+  const footerClass = isLoggedIn() && pathname.startsWith("/dashboard") ? "bg-[#333333]" : "bg-backgroud";
+
   return (
-    <footer className="w-full px-4 py-6">
+    <footer className={`w-full px-4 py-6 ${footerClass}`}>
       <div className="container mx-auto px-4">
         <Separator className="pt-8 border-t border-primary-foreground/10 text-center" />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">

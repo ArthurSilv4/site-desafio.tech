@@ -26,6 +26,7 @@ interface AuthContextType {
   signUp: (data: SignUpData) => Promise<void>;
   verifyCode: (data: VerifyCodeData) => Promise<void>;
   signOut: () => void;
+  isLoggedIn: () => boolean;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -100,8 +101,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     router.push('/');
   }
 
+  function isLoggedIn() {
+    return token !== null;
+  }
+
   return (
-    <AuthContext.Provider value={{ token, signIn, signUp, verifyCode, signOut }}>
+    <AuthContext.Provider value={{ token, signIn, signUp, verifyCode, signOut, isLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

@@ -9,7 +9,7 @@ import { LineChartComponent } from "@/components/charts/lineChartComponent"
 export default function Profile() {
 
   return (
-    <main className="flex flex-col min-h-screen">
+    <main className="flex bg-[#333333] flex-col min-h-screen">
       <section className="w-full py-12 md:py-24 lg:py-32 flex">
         <div className="container px-4 md:px-6 m-auto">
           <div className="flex justify-between">
@@ -30,7 +30,7 @@ export default function Profile() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-6 md:gap-20 mt-20 w-full">
-            <Card className="text-white flex flex-col h-40 w-full md:w-1/3 justify-center">
+            <Card className="flex flex-col h-40 w-full md:w-1/3 justify-center bg-[#2A2A2A]">
               <CardHeader className="pb-0">
                 <CardTitle className="text-gray-400">Desafios concluidos</CardTitle>
               </CardHeader>
@@ -38,7 +38,7 @@ export default function Profile() {
                 10 Desafios Concluidos
               </CardContent>
             </Card>
-            <Card className="text-white flex flex-col h-40 w-full md:w-1/3 justify-center">
+            <Card className="text-white flex flex-col h-40 w-full md:w-1/3 justify-center bg-[#2A2A2A]">
               <CardHeader className="pb-0 flex">
                 <CardTitle className="text-gray-400">Missoes concluidas</CardTitle>
               </CardHeader>
@@ -46,7 +46,7 @@ export default function Profile() {
                 400 / 500
               </CardContent>
             </Card>
-            <Card className="text-white flex flex-col h-40 w-full md:w-1/3 justify-center">
+            <Card className="text-white flex flex-col h-40 w-full md:w-1/3 justify-center bg-[#2A2A2A]">
               <CardHeader className="pb-0 flex">
                 <CardTitle className="text-gray-400">Você esta indo muito bem</CardTitle>
               </CardHeader>
@@ -58,7 +58,7 @@ export default function Profile() {
 
 
           <div className="flex flex-col md:flex-row gap-6 mt-20 justify-center">
-            <Card className="w-full md:w-1/2">
+            <Card className="w-full md:w-1/2 bg-[#2A2A2A]">
               <CardHeader>
                 <CardTitle className="underline underline-offset-4 decoration-2 decoration-yellow-500">Áreas</CardTitle>
               </CardHeader>
@@ -71,7 +71,7 @@ export default function Profile() {
 
 
 
-            <Card className="w-full md:w-1/2">
+            <Card className="w-full md:w-1/2 bg-[#2A2A2A]">
               <CardHeader>
                 <CardTitle className="underline underline-offset-4 decoration-2 decoration-yellow-500">Frequência</CardTitle>
               </CardHeader>
