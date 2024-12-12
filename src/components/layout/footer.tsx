@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer className={`w-full px-4 py-6 ${footerClass}`}>
       <div className="container mx-auto px-4">
-        <Separator className="pt-8 border-t border-primary-foreground/10 text-center" />
+        <Separator className="pt-8 border-t border-zinc-600 text-center " />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className=" text-white flex items-center gap-2">
             <Logo />
