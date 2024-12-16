@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import Footer from "@/components/layout/footer"
-import Header from "@/components/layout/header"
+import Footer from "@/components/landingPage/layout/footer"
+import Header from "@/components/landingPage/layout/header"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import SideBarr from "@/components/sideBar/sideBar"
+import AppSideBar from "@/components/dashboard/sideBar/page"
 import { SidebarProvider } from "@/components/ui/sidebar"
 
 const geistSans = localFont({
@@ -37,7 +37,7 @@ export default function RootLayout({
       >
         <AuthProvider>
           <SidebarProvider>
-            <SideBarr />
+            <AppSideBar />
             <main className="m-auto h-full w-full overflow-hidden">
               <Header />
 

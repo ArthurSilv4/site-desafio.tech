@@ -1,4 +1,4 @@
-import Filter from "@/components/filter/page"
+import Filter from "@/components/dashboard/filter/page"
 import { Button } from "@/components/ui/button"
 import {
   Card,

@@ -1,7 +1,11 @@
-'use client'
+"use client"
 
-import { Line, LineChart, ResponsiveContainer, XAxis } from "recharts";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+import { Line, LineChart, ResponsiveContainer, XAxis } from "recharts"
 
 const squareChartData = [
   { month: "Jan", sales: 1 },
@@ -24,7 +28,7 @@ const chartConfig = {
 
 export function LineChartComponent() {
   return (
-    <ChartContainer config={chartConfig} className="h-full m-auto w-full">
+    <ChartContainer config={chartConfig} className="m-auto h-full w-full">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={squareChartData}>
           <XAxis dataKey="month" />

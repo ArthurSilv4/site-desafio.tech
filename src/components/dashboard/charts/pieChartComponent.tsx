@@ -1,8 +1,12 @@
 "use client"
 
 import { Label, Legend, Pie, PieChart, ResponsiveContainer } from "recharts"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart"
 import React from "react"
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
 
 const pieChartData = [
   { browser: "chrome", visitors: 275, fill: "hsl(var(--chart-1))" },
@@ -28,7 +32,7 @@ export function PieChartComponent() {
   }, [])
 
   return (
-    <ChartContainer config={chartConfig} className="h-full m-auto">
+    <ChartContainer config={chartConfig} className="m-auto h-full">
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
           <ChartTooltip content={<ChartTooltipContent hideLabel />} />
@@ -36,8 +40,16 @@ export function PieChartComponent() {
             data={pieChartData}
             dataKey="visitors"
             nameKey="browser"
-            innerRadius={typeof window !== "undefined" && window.innerWidth >= 640 ? "50%" : "60%"}
-            outerRadius={typeof window !== "undefined" && window.innerWidth >= 640 ? "70%" : "80%"}
+            innerRadius={
+              typeof window !== "undefined" && window.innerWidth >= 640
+                ? "50%"
+                : "60%"
+            }
+            outerRadius={
+              typeof window !== "undefined" && window.innerWidth >= 640
+                ? "70%"
+                : "80%"
+            }
             strokeWidth={5}
             cx="50%"
             cy="50%"

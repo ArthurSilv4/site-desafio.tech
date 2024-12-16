@@ -26,7 +26,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Logo } from "../logo/logo"
+import { Logo } from "../../logo/logo"
 
 const menuItems = [
   {
@@ -56,7 +56,7 @@ const menuItems = [
   },
 ]
 
-export default function SideBarr() {
+export default function AppSideBar() {
   const { isLoggedIn } = useAuth()
   const pathname = usePathname()
 

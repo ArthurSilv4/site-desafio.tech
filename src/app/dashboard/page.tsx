@@ -1,5 +1,5 @@
-import { LineChartComponent } from "@/components/charts/lineChartComponent"
-import { PieChartComponent } from "@/components/charts/pieChartComponent"
+import { LineChartComponent } from "@/components/dashboard/charts/lineChartComponent"
+import { PieChartComponent } from "@/components/dashboard/charts/pieChartComponent"
 import {
   Card,
   CardContent,

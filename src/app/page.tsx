@@ -1,7 +1,5 @@
-import Main from "@/components/layout/main";
+import Main from "@/components/landingPage/layout/main"
 
 export default function Home() {
-  return (
-    <Main></Main>
-  );
+  return <Main></Main>
 }
