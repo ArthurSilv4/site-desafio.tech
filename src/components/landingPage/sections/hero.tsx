@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import SvgCharts from "../../svgs/charts"
+import { CardCharts } from "../cardCharts/page"
 
 export default function Hero() {
   return (
@@ -22,15 +22,7 @@ export default function Hero() {
               </Button>
             </div>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-[600px] p-4">
-              <div className="overflow-hidden rounded-lg bg-card p-4 shadow-2xl">
-                <div className="h-full w-full overflow-hidden">
-                  <SvgCharts className="mx-auto h-full w-full object-contain" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <CardCharts />
         </div>
       </div>
     </section>
