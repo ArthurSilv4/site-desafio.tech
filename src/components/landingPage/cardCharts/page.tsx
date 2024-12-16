@@ -51,7 +51,7 @@ const chartConfig = {
 
 export function CardCharts() {
   return (
-    <Card className="h-auto w-full p-4 shadow-2xl">
+    <Card className="hidden h-auto w-full p-4 shadow-2xl md:block">
       <CardContent className="grid gap-4 md:grid-cols-2 xl:grid-cols-2">
         <Card>
           <CardHeader>
