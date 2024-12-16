@@ -1,6 +1,6 @@
 import { Calendar, Wallet, FolderKanban } from "lucide-react"
 import Image from "next/image"
-import { Card } from "../../ui/card"
+import { Card, CardContent } from "../../ui/card"
 
 export function Feature() {
   return (
@@ -51,12 +51,15 @@ export function Feature() {
           </div>
         </div>
         <Card className="relative aspect-[4/3] bg-[#D9EFEB] p-8">
-          <Image
-            src="/images/Image.svg"
-            alt="App preview"
-            layout="fill"
-            className="mx-auto rounded-[15px] shadow-2xl"
-          />
+          <CardContent>
+            <Image
+              src="/images/mobile.png"
+              alt="App preview"
+              width={300}
+              height={200}
+              className="mx-auto rounded-[15px]"
+            />
+          </CardContent>
         </Card>
       </div>
     </section>

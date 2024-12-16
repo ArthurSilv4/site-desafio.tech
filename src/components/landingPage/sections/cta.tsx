@@ -1,6 +1,6 @@
 import { Button } from "../../ui/button"
 import Image from "next/image"
-import { Card } from "../../ui/card"
+import { Card, CardContent } from "../../ui/card"
 
 export default function Cta() {
   return (
@@ -19,21 +19,21 @@ export default function Cta() {
             Em 15 dias, você será capaz de transformar problemas reais em
             soluções criativas e inovadoras
           </p>
-          <Button
-            className="bg-[#ffd875] px-8 text-black hover:bg-[#ffc875]"
-            size="lg"
-          >
+          <Button className="bg-[#FFDF90] px-8 hover:bg-[#FFDF90]/60" size="lg">
             Comece Agora
           </Button>
         </div>
 
-        <Card className="relative aspect-[4/3] bg-[#D9EFEB] p-8">
-          <Image
-            src="/images/Image.svg"
-            alt="App preview"
-            layout="fill"
-            className="mx-auto rounded-[15px] shadow-2xl"
-          />
+        <Card className="relative flex aspect-[4/3] items-center justify-center bg-[#D9EFEB] p-8">
+          <CardContent>
+            <Image
+              src="/images/mobile.png"
+              alt="App preview"
+              width={250}
+              height={150}
+              className="rounded-[15px]"
+            />
+          </CardContent>
         </Card>
       </div>
     </section>

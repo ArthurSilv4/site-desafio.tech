@@ -4,6 +4,7 @@ import { Medal } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
 import { PieChartComponent } from "@/components/dashboard/charts/pieChartComponent"
 import { LineChartComponent } from "@/components/dashboard/charts/lineChartComponent"
+import { CustomCardTitle } from "@/components/customs/CustomCardTitle/page"
 
 export default function Profile() {
   return (
@@ -27,9 +28,9 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="mt-20 flex w-full flex-col gap-6 md:flex-row md:gap-20">
-            <Card className="flex h-40 w-full flex-col justify-center bg-[#2A2A2A] md:w-1/3">
-              <CardHeader className="pb-0">
+          <div className="mt-8 flex flex-col justify-between gap-4 md:flex-row">
+            <Card className="h-40 w-full bg-[#2A2A2A] md:w-1/3">
+              <CardHeader>
                 <CardTitle className="text-gray-400">
                   Desafios concluidos
                 </CardTitle>
@@ -38,8 +39,8 @@ export default function Profile() {
                 10 Desafios Concluidos
               </CardContent>
             </Card>
-            <Card className="flex h-40 w-full flex-col justify-center bg-[#2A2A2A] text-white md:w-1/3">
-              <CardHeader className="flex pb-0">
+            <Card className="h-40 w-full bg-[#2A2A2A] md:w-1/3">
+              <CardHeader className="">
                 <CardTitle className="text-gray-400">
                   Missoes concluidas
                 </CardTitle>
@@ -48,8 +49,8 @@ export default function Profile() {
                 400 / 500
               </CardContent>
             </Card>
-            <Card className="flex h-40 w-full flex-col justify-center bg-[#2A2A2A] text-white md:w-1/3">
-              <CardHeader className="flex pb-0">
+            <Card className="h-40 w-full bg-[#2A2A2A] md:w-1/3">
+              <CardHeader>
                 <CardTitle className="text-gray-400">
                   Você esta indo muito bem
                 </CardTitle>
@@ -60,30 +61,22 @@ export default function Profile() {
             </Card>
           </div>
 
-          <div className="mt-20 flex flex-col justify-center gap-6 md:flex-row">
+          <div className="mt-20 flex flex-col justify-center gap-4 md:flex-row">
             <Card className="w-full bg-[#2A2A2A] md:w-1/2">
               <CardHeader>
-                <CardTitle className="underline decoration-yellow-500 decoration-2 underline-offset-4">
-                  Áreas
-                </CardTitle>
+                <CustomCardTitle title="Áreas" />
               </CardHeader>
               <CardContent>
-                <div className="m-auto h-full w-full">
-                  <PieChartComponent />
-                </div>
+                <PieChartComponent />
               </CardContent>
             </Card>
 
             <Card className="w-full bg-[#2A2A2A] md:w-1/2">
               <CardHeader>
-                <CardTitle className="underline decoration-yellow-500 decoration-2 underline-offset-4">
-                  Frequência
-                </CardTitle>
+                <CustomCardTitle title="Frequência" />
               </CardHeader>
               <CardContent>
-                <div>
-                  <LineChartComponent />
-                </div>
+                <LineChartComponent />
               </CardContent>
             </Card>
           </div>

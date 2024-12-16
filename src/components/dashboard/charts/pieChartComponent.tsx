@@ -9,11 +9,11 @@ import {
 } from "@/components/ui/chart"
 
 const pieChartData = [
-  { browser: "chrome", visitors: 275, fill: "hsl(var(--chart-1))" },
-  { browser: "safari", visitors: 200, fill: "hsl(var(--chart-2))" },
-  { browser: "firefox", visitors: 287, fill: "hsl(var(--chart-3))" },
-  { browser: "edge", visitors: 173, fill: "hsl(var(--chart-4))" },
-  { browser: "other", visitors: 190, fill: "hsl(var(--chart-5))" },
+  { browser: "Front", visitors: 2, fill: "hsl(var(--chart-1))" },
+  { browser: "Back", visitors: 3, fill: "hsl(var(--chart-2))" },
+  { browser: "Mobile", visitors: 4, fill: "hsl(var(--chart-3))" },
+  { browser: "Dados", visitors: 2, fill: "hsl(var(--chart-4))" },
+  { browser: "Jogos", visitors: 1, fill: "hsl(var(--chart-5))" },
 ]
 
 const chartConfig = {
@@ -76,7 +76,7 @@ export function PieChartComponent() {
                         y={(viewBox.cy || 0) + 24}
                         className="fill-muted-foreground"
                       >
-                        Visitors
+                        Áreas
                       </tspan>
                     </text>
                   )
