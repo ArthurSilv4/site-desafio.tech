@@ -5,6 +5,7 @@ import { Progress } from "@/components/ui/progress"
 import { PieChartComponent } from "@/components/dashboard/charts/pieChartComponent"
 import { LineChartComponent } from "@/components/dashboard/charts/lineChartComponent"
 import { CustomCardTitle } from "@/components/customs/CustomCardTitle/page"
+import { ProgressBar } from "@/components/dashboard/progressBar/page"
 
 export default function Profile() {
   return (
@@ -21,11 +22,7 @@ export default function Profile() {
                 <Medal className="h-6 w-6 text-yellow-500 hover:text-red-100" />
               </div>
             </div>
-            <div className="flex w-full flex-col justify-center">
-              <span className="mb-2 font-bold">Nivel 25</span>
-              <Progress value={85} />
-              <span className="ml-auto text-gray-400">85/100</span>
-            </div>
+            <ProgressBar />
           </div>
 
           <div className="mt-8 flex flex-col justify-between gap-4 md:flex-row">
