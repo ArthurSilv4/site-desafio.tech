@@ -2,8 +2,8 @@ import React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Medal } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
-import { PieChartComponent } from "@/components/charts/pieChartComponent"
-import { LineChartComponent } from "@/components/charts/lineChartComponent"
+import { PieChartComponent } from "@/components/dashboard/charts/pieChartComponent"
+import { LineChartComponent } from "@/components/dashboard/charts/lineChartComponent"
 
 export default function Profile() {
   return (
