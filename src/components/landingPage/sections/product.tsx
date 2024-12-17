@@ -8,9 +8,9 @@ export default function Product() {
         <Card className="flex h-full items-end justify-center border-none bg-[#FDF5DF]">
           <CardContent className="flex h-full w-full items-end justify-center p-0">
             <Image
-              src="/images/profile.png"
-              width={800}
-              height={400}
+              src="/images/product.png"
+              width={1920}
+              height={1080}
               layout="responsive"
               alt="Product Image"
               className="rounded-lg object-contain"
