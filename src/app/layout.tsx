@@ -21,7 +21,7 @@ const geistMono = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Desafio.Tech",
+  title: "Desafioo.Tech",
   description: "Desafios de programação para desenvolvedores",
 }
 
