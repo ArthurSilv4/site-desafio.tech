@@ -36,7 +36,7 @@ const ActionButtons: React.FC<ActionButtonsProps> = ({ className }) => {
           </Button>
         </Link>
       ) : (
-        <Link href={"/signIn"}>
+        <Link href={"auth/signIn"}>
           <Button size="sm">
             <LogIn className="mr-2 h-4 w-4" />
             Login

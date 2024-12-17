@@ -16,6 +16,7 @@ import {
 import { Separator } from "@/components/ui/separator"
 import { AuthContext } from "@/contexts/AuthContext"
 import { signIn } from "next-auth/react"
+import Link from "next/link"
 
 const SignIn = () => {
   const [email, setEmail] = useState("")
@@ -153,9 +154,12 @@ const SignIn = () => {
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-400">
             Não tem uma conta?{" "}
-            <a href="/signUp" className="text-[#FFDF90] hover:underline">
+            <Link
+              href="/auth/signUp"
+              className="text-[#FFDF90] hover:underline"
+            >
               Cadastre-se
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>
