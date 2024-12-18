@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Medal } from "lucide-react"
@@ -6,15 +8,18 @@ import { PieChartComponent } from "@/components/dashboard/charts/pieChartCompone
 import { LineChartComponent } from "@/components/dashboard/charts/lineChartComponent"
 import { CustomCardTitle } from "@/components/customs/CustomCardTitle/page"
 import { ProgressBar } from "@/components/dashboard/progressBar/page"
+import { ProfileProvider, useProfile } from "@/contexts/ProfileContext"
 
-export default function Profile() {
+function ProfileContent() {
+  const { profile } = useProfile()
+
   return (
     <main className="flex min-h-screen flex-col bg-[#333333]">
       <section className="flex w-full py-12 md:py-24 lg:py-32">
         <div className="container m-auto px-4 md:px-6">
           <div className="flex justify-between">
             <div className="w-full">
-              <h1 className="text-4xl font-bold">Olá Arthur👋</h1>
+              <h1 className="text-4xl font-bold">Olá {profile?.name}👋</h1>
               <p className="mt-2 text-gray-400">Seja bem vindo ao seu perfil</p>
               <div className="mt-2 flex gap-2">
                 <Medal className="h-6 w-6 text-yellow-500 hover:text-red-100" />
@@ -80,5 +85,13 @@ export default function Profile() {
         </div>
       </section>
     </main>
+  )
+}
+
+export default function Profile() {
+  return (
+    <ProfileProvider>
+      <ProfileContent />
+    </ProfileProvider>
   )
 }
