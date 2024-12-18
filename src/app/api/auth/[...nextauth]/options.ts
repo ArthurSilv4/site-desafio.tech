@@ -8,8 +8,6 @@ if (!clientId || !clientSecret) {
   throw new Error('Missing client id or client secret')
 }
 
-console.log('clientId', clientId)
-
 export const AuthOptions: NextAuthOptions = {
   providers: [
     GithubProvider({
