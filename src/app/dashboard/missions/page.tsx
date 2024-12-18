@@ -1,3 +1,5 @@
+"use client"
+
 import { ProgressBar } from "@/components/dashboard/progressBar/page"
 import { Button } from "@/components/ui/button"
 import {
@@ -8,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { ProfileProvider } from "@/contexts/ProfileContext"
 import { Medal } from "lucide-react"
 
 export default function Missions() {
@@ -62,7 +65,9 @@ export default function Missions() {
         <div className="container m-auto px-4 md:px-6">
           <div className="flex justify-between">
             <h1 className="w-full text-4xl font-bold">Missoes</h1>
-            <ProgressBar />
+            <ProfileProvider>
+              <ProgressBar />
+            </ProfileProvider>
           </div>
           <div>
             <div>
