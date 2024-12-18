@@ -19,11 +19,12 @@ export function FormsSingUp() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
+    const name = formData.get("name") as string
     const email = formData.get("email") as string
     const password = formData.get("password") as string
 
     try {
-      await signUp({ email, password })
+      await signUp({ name, email, password })
       console.log("Sign up successful")
     } catch (error) {
       console.error("Failed to sign up", error)
