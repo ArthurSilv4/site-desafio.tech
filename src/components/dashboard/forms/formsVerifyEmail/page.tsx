@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { AuthContext } from "@/contexts/AuthContext"
+import { AuthContext } from "@/contexts/auth/AuthContext"
 import { useContext, useState } from "react"
 
 export function FormsVerifyEmail() {

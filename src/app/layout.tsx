@@ -3,11 +3,10 @@ import localFont from "next/font/local"
 import "./globals.css"
 import Footer from "@/components/landingPage/layout/footer"
 import Header from "@/components/landingPage/layout/header"
-import { AuthProvider } from "@/contexts/AuthContext"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import AppSideBar from "@/components/dashboard/sideBar/page"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import { AppProvider } from "@/contexts/page"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,19 +34,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AuthProvider>
-          <SidebarProvider>
-            <AppSideBar />
-            <main className="m-auto h-full w-full overflow-hidden">
-              <Header />
+        <AppProvider>
+          <AppSideBar />
+          <main className="m-auto h-full w-full overflow-hidden">
+            <Header />
 
-              {children}
-              <Analytics />
-              <SpeedInsights />
-              <Footer />
-            </main>
-          </SidebarProvider>
-        </AuthProvider>
+            {children}
+            <Analytics />
+            <SpeedInsights />
+            <Footer />
+          </main>
+        </AppProvider>
       </body>
     </html>
   )

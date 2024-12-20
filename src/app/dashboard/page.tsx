@@ -1,3 +1,5 @@
+"use client"
+
 import Filter from "@/components/dashboard/filter/page"
 import { Button } from "@/components/ui/button"
 import {
@@ -7,29 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-
-const desafios = [
-  {
-    id: 1,
-    title: "Desafio 1",
-    description: "Descrição do desafio 1",
-    status: "Em Andamento",
-  },
-  {
-    id: 2,
-    title: "Desafio 2",
-    description: "Descrição do desafio 2",
-    status: "Em Andamento",
-  },
-  {
-    id: 3,
-    title: "Desafio 3",
-    description: "Descrição do desafio 3",
-    status: "Em Andamento",
-  },
-]
+import {
+  ChallengeProvider,
+  useChallenge,
+} from "@/contexts/challenge/ChallengeContext"
 
 export default function Dashboard() {
+  const { challenges } = useChallenge()
+
   return (
     <main className="flex min-h-screen flex-col bg-[#333333]">
       <section className="flex w-full flex-col py-12 md:py-24 lg:py-32">
@@ -42,7 +29,7 @@ export default function Dashboard() {
 
           <div>
             <div className="-mx-2 flex flex-wrap">
-              {desafios.map((item) => (
+              {challenges.map((item) => (
                 <div
                   key={item.id}
                   className="mt-4 w-full px-2 sm:w-1/2 lg:w-1/3"
@@ -52,7 +39,17 @@ export default function Dashboard() {
                       <CardTitle className="text-2xl font-semibold">
                         {item.title}
                       </CardTitle>
-                      <CardDescription>{item.status}</CardDescription>
+                      <CardDescription
+                        className={
+                          item.status === "Completo"
+                            ? "text-green-500/60"
+                            : item.status === "Em Andamento"
+                              ? "text-yellow-500/60"
+                              : "text-red-500/60"
+                        }
+                      >
+                        {item.status}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <p>{item.description}</p>

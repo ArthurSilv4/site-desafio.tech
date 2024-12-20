@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { AuthContext } from "@/contexts/AuthContext"
+import { AuthContext } from "@/contexts/auth/AuthContext"
 import { Eye, EyeOff } from "lucide-react"
 import { useContext, useState } from "react"
 

@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { Button } from "../../ui/button"
 import { Heart, LogIn, MessageSquare } from "lucide-react"
-import { AuthContext } from "@/contexts/AuthContext"
+import { AuthContext } from "@/contexts/auth/AuthContext"
 
 interface ActionButtonsProps {
   className?: string

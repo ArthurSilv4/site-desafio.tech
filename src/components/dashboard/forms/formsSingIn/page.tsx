@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useContext, useState } from "react"
-import { AuthContext } from "@/contexts/AuthContext"
+import { AuthContext } from "@/contexts/auth/AuthContext"
 
 export function FormsSingIn() {
   const [email, setEmail] = useState("")

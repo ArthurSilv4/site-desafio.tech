@@ -23,7 +23,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { useAuth } from "@/contexts/AuthContext"
+import { useAuth } from "@/contexts/auth/AuthContext"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { Logo } from "../../logo/logo"
