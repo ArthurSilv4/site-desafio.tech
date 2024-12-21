@@ -1,6 +1,6 @@
 import Filter from "@/components/dashboard/filter/page"
 
-import { CardsChallenges } from "@/components/dashboard/CardsChallenges/page"
+import { CardsChallenges } from "@/components/dashboard/challenges/CardsChallenges/page"
 
 export default function Challenges() {
   return (
