@@ -27,10 +27,10 @@ export default function Cta() {
         <Card className="relative flex aspect-[4/3] items-center justify-center bg-[#D9EFEB] p-8">
           <CardContent>
             <Image
-              src="/images/mobile.png"
+              src="/images/mobile-login.png"
               alt="App preview"
-              width={250}
-              height={150}
+              width={350}
+              height={250}
               className="rounded-[15px]"
             />
           </CardContent>
