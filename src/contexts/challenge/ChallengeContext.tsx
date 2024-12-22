@@ -14,12 +14,15 @@ interface ChallengeData {
   challengeDates: string[]
   completed: boolean
   status: string
+  tags: string[]
 }
 
 const ChallengeContext = createContext<
   | {
       challenges: ChallengeData[]
       setChallenges: React.Dispatch<React.SetStateAction<ChallengeData[]>>
+      fetchAllChallenges: () => void
+      fetchChallenges: () => void
     }
   | undefined
 >(undefined)
@@ -32,33 +35,54 @@ export const ChallengeProvider: React.FC<ChallengeProviderProps> = ({
   children,
 }) => {
   const [challenges, setChallenges] = useState<ChallengeData[]>([])
+  const [token, setToken] = useState<string | null>(null)
 
   useEffect(() => {
-    const fetchChallenges = async () => {
-      const cookies = parseCookies()
-      const token = cookies["desafio.tech-token"]
+    const { "desafio.tech-token": storedToken } = parseCookies()
 
-      try {
-        const response = await axios.get(
-          "https://localhost:7092/challenges/all",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-
-        setChallenges(Array.isArray(response.data) ? response.data : [])
-      } catch (error) {
-        console.error("Erro ao buscar informações dos desafios", error)
-      }
+    if (storedToken) {
+      setToken(storedToken)
     }
-
-    fetchChallenges()
   }, [])
 
+  const fetchAllChallenges = () => {
+    if (token) {
+      axios
+        .get("https://localhost:7092/challenges/all", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setChallenges(Array.isArray(response.data) ? response.data : [])
+        })
+        .catch((error) => {
+          console.error("Error fetching profile:", error)
+        })
+    }
+  }
+
+  const fetchChallenges = () => {
+    if (token) {
+      axios
+        .get("https://localhost:7092/challenges", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setChallenges(Array.isArray(response.data) ? response.data : [])
+        })
+        .catch((error) => {
+          console.error("Error fetching data from other route:", error)
+        })
+    }
+  }
+
   return (
-    <ChallengeContext.Provider value={{ challenges, setChallenges }}>
+    <ChallengeContext.Provider
+      value={{ challenges, setChallenges, fetchAllChallenges, fetchChallenges }}
+    >
       {children}
     </ChallengeContext.Provider>
   )

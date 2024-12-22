@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -11,12 +12,28 @@ import {
 import { useChallenge } from "@/contexts/challenge/ChallengeContext"
 import { DayPickerProvider } from "react-day-picker"
 
+interface ChallengeData {
+  id: string
+  title: string
+  status: string
+  description: string
+}
+
 export function ChallengesCards() {
-  const { challenges } = useChallenge()
+  const { fetchAllChallenges, challenges } = useChallenge()
+  const [localChallenges, setLocalChallenges] = useState<ChallengeData[]>([])
+
+  useEffect(() => {
+    fetchAllChallenges()
+  }, [fetchAllChallenges])
+
+  useEffect(() => {
+    setLocalChallenges(challenges)
+  }, [challenges])
 
   return (
     <DayPickerProvider initialProps={{ mode: "single" }}>
-      {challenges.map((item) => (
+      {localChallenges.map((item) => (
         <div key={item.id} className="mt-4 w-full px-2 sm:w-1/2 lg:w-1/3">
           <Card>
             <CardHeader>

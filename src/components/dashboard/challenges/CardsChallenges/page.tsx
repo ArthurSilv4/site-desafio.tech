@@ -17,462 +17,56 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
-import { useState } from "react"
+import { useChallenge } from "@/contexts/challenge/ChallengeContext"
+import { useEffect, useState } from "react"
 
-const challenges = [
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "intermediario", "mobile"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc. loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "dificil", "dados"],
-  },
-  {
-    title: "Fazer tal ccoisa bem",
-    description:
-      "loren ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio vitae nunc.",
-    tags: ["front", "facil", "back"],
-  },
-]
+interface ChallengeData {
+  id: string
+  title: string
+  description: string
+  author: string
+  startDate: string
+  endDate: string
+  challengeDates: string[]
+  completed: boolean
+  status: string
+  tags: string[]
+}
 
 const ITEMS_PER_PAGE = 9
 
 export function CardsChallenges() {
+  const { fetchChallenges, challenges } = useChallenge()
+  const [localChallenges, setLocalChallenges] = useState<ChallengeData[]>([])
+
+  useEffect(() => {
+    fetchChallenges()
+  }, [fetchChallenges])
+
+  useEffect(() => {
+    setLocalChallenges(challenges)
+  }, [challenges])
+
   const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = Math.ceil(challenges.length / ITEMS_PER_PAGE)
+  const totalPages = Math.ceil(localChallenges.length / ITEMS_PER_PAGE)
 
   const handlePageChange = (page: React.SetStateAction<number>) => {
     setCurrentPage(page)
   }
 
-  const currentChallenges = challenges.slice(
+  const currentChallenges = localChallenges.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   )
 
+  if (localChallenges.length === 0) {
+    return <p>Nenhum desafio encontrado</p>
+  }
+
   return (
     <>
       <div className="mt-8 grid gap-4 lg:grid-cols-3 lg:gap-8 xl:grid-cols-3">
-        {currentChallenges.map((challenge, index) => (
+        {currentChallenges?.map((challenge, index) => (
           <Card key={index} className="flex max-h-96 flex-col bg-[#2A2A2A]">
             <CardHeader>
               <CardTitle>{challenge.title}</CardTitle>
@@ -484,7 +78,7 @@ export function CardsChallenges() {
               <Button className="mt-4">Iniciar</Button>
             </CardContent>
             <CardFooter className="gap-2">
-              {challenge.tags.map((tag, tagIndex) => {
+              {challenge?.tags?.map((tag, tagIndex) => {
                 const tagColors: { [key: string]: string } = {
                   front: "bg-blue-500",
                   back: "bg-indigo-500",
@@ -508,43 +102,45 @@ export function CardsChallenges() {
         ))}
       </div>
 
-      <div className="mt-16 flex justify-center">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              {currentPage > 1 && (
-                <PaginationPrevious
-                  href="#"
-                  onClick={() => handlePageChange(currentPage - 1)}
-                />
-              )}
-            </PaginationItem>
-            {[...Array(totalPages)].map((_, index) => (
-              <PaginationItem key={index}>
-                <PaginationLink
-                  href="#"
-                  onClick={() => handlePageChange(index + 1)}
-                  className={
-                    currentPage === index + 1
-                      ? "bg-primary text-primary-foreground"
-                      : ""
-                  }
-                >
-                  {index + 1}
-                </PaginationLink>
+      {totalPages > 1 && (
+        <div className="mt-16 flex justify-center">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                {currentPage > 1 && (
+                  <PaginationPrevious
+                    href="#"
+                    onClick={() => handlePageChange(currentPage - 1)}
+                  />
+                )}
               </PaginationItem>
-            ))}
-            <PaginationItem>
-              {currentPage < totalPages && (
-                <PaginationNext
-                  href="#"
-                  onClick={() => handlePageChange(currentPage + 1)}
-                />
-              )}
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
+              {[...Array(totalPages)].map((_, index) => (
+                <PaginationItem key={index}>
+                  <PaginationLink
+                    href="#"
+                    onClick={() => handlePageChange(index + 1)}
+                    className={
+                      currentPage === index + 1
+                        ? "bg-primary text-primary-foreground"
+                        : ""
+                    }
+                  >
+                    {index + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                {currentPage < totalPages && (
+                  <PaginationNext
+                    href="#"
+                    onClick={() => handlePageChange(currentPage + 1)}
+                  />
+                )}
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </>
   )
 }

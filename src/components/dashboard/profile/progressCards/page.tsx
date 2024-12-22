@@ -10,6 +10,8 @@ export function ProgressCards() {
     return <div>Carregando...</div>
   }
 
+  console.log(profile)
+
   return (
     <>
       <Card className="h-40 w-full bg-[#2A2A2A]">
