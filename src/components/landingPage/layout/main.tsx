@@ -6,7 +6,7 @@ import Product from "../sections/product"
 import Cta from "../sections/cta"
 import FAQ from "../sections/faq"
 
-export default function Main() {
+export default function MainLandingPage() {
   return (
     <main className="flex min-h-screen flex-col">
       <Hero />

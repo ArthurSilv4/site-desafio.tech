@@ -1,10 +1,10 @@
-import Link from "next/link"
+import { Logo } from "@/components/logo/logo"
 import { Separator } from "@radix-ui/react-separator"
-import { Logo } from "../../logo/logo"
+import Link from "next/link"
 
-export default function FooterLandingPage() {
+export function FooterDashboard() {
   return (
-    <footer className="bg-backgroud w-full px-4 py-6">
+    <footer className="w-full bg-[#333333] px-4 py-6">
       <div className="container mx-auto px-4">
         <Separator className="border-t border-zinc-600 pt-8 text-center" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">

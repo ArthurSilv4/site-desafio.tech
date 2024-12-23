@@ -1,11 +1,8 @@
 import type { Metadata } from "next"
 import localFont from "next/font/local"
 import "./globals.css"
-import Footer from "@/components/landingPage/layout/footer"
-import Header from "@/components/landingPage/layout/header"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import AppSideBar from "@/components/dashboard/sideBar/page"
 import { AppProvider } from "@/contexts/page"
 
 const geistSans = localFont({
@@ -35,15 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppProvider>
-          <AppSideBar />
-          <main className="m-auto h-full w-full overflow-hidden">
-            <Header />
-
-            {children}
-            <Analytics />
-            <SpeedInsights />
-            <Footer />
-          </main>
+          {children}
+          <Analytics />
+          <SpeedInsights />
         </AppProvider>
       </body>
     </html>
