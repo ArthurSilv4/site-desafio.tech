@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 import { useChallenge } from "@/contexts/challenge/ChallengeContext"
 import { DayPickerProvider } from "react-day-picker"
-
+import { useRouter } from "next/navigation"
 interface ChallengeData {
   id: string
   title: string
@@ -30,6 +30,12 @@ export function ChallengesCards() {
   useEffect(() => {
     setLocalChallenges(challenges)
   }, [challenges])
+
+  const router = useRouter()
+
+  const handleChallenge = (id: string) => {
+    router.push(`/dashboard/${id}`)
+  }
 
   return (
     <DayPickerProvider initialProps={{ mode: "single" }}>
@@ -54,7 +60,9 @@ export function ChallengesCards() {
             </CardHeader>
             <CardContent>
               <p>{item.description}</p>
-              <Button className="mt-2">Continuar</Button>
+              <Button className="mt-2" onClick={() => handleChallenge(item.id)}>
+                Continuar
+              </Button>
             </CardContent>
           </Card>
         </div>
