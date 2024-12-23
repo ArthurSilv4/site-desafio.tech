@@ -10,7 +10,7 @@ export default function DashboardLayout({
   return (
     <>
       <AppSideBar />
-      <div className="m-auto h-full w-full overflow-hidden bg-red-100">
+      <div className="m-auto h-full w-full overflow-hidden">
         <HeaderDashboard />
         {children}
         <FooterDashboard />
