@@ -12,6 +12,8 @@ import {
 import { useChallenge } from "@/contexts/challenge/ChallengeContext"
 import { DayPickerProvider } from "react-day-picker"
 import { useRouter } from "next/navigation"
+import { parseCookies } from "nookies"
+import axios from "axios"
 interface ChallengeData {
   id: string
   title: string
@@ -22,6 +24,8 @@ interface ChallengeData {
 export function ChallengesCards() {
   const { fetchAllChallenges, challenges } = useChallenge()
   const [localChallenges, setLocalChallenges] = useState<ChallengeData[]>([])
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
 
   useEffect(() => {
     fetchAllChallenges()
@@ -34,7 +38,62 @@ export function ChallengesCards() {
   const router = useRouter()
 
   const handleChallenge = (id: string) => {
-    router.push(`/dashboard/${id}`)
+    setSelectedId(id)
+    setIsOverlayVisible(true)
+  }
+
+  const closeOverlay = () => {
+    setIsOverlayVisible(false)
+    setSelectedId(null)
+  }
+
+  const [data, setData] = useState<any>(null)
+
+  const { "desafio.tech-token": token } = parseCookies()
+
+  useEffect(() => {
+    if (selectedId) {
+      axios
+        .get(`https://localhost:7092/challenges/${selectedId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setData(response.data)
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error)
+        })
+    }
+  }, [selectedId, token])
+
+  const renderOverlay = (id: string) => {
+    console.log(data)
+
+    return (
+      <div
+        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-2"
+        onClick={closeOverlay}
+      >
+        <div
+          className="h-[90%] w-[100%] rounded bg-background p-4 md:w-[80%] 2xl:w-[60%]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {data && (
+            <div>
+              {Object.entries(data).map(([key, value]) => (
+                <div key={key} className="mb-2">
+                  <strong>{key}:</strong> {value as React.ReactNode}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <Button onClick={closeOverlay}>Close</Button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -67,6 +126,7 @@ export function ChallengesCards() {
           </Card>
         </div>
       ))}
+      {isOverlayVisible && selectedId && renderOverlay(selectedId)}
     </DayPickerProvider>
   )
 }
