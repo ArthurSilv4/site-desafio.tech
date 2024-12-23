@@ -11,7 +11,7 @@ import { FormsVerifyEmail } from "@/components/dashboard/forms/formsVerifyEmail/
 
 export default function VerifyEmail() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
+    <main className="m-auto flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-md text-white">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">

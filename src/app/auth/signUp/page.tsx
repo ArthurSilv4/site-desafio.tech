@@ -13,7 +13,7 @@ import { FormsSingUp } from "@/components/dashboard/forms/formsSingUp/page"
 
 export default function SignUp() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="m-auto flex min-h-screen items-center justify-center">
       <Card className="w-full max-w-md text-white">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Criar uma conta</CardTitle>
