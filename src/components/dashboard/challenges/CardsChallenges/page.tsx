@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/pagination"
 import { useChallenge } from "@/contexts/challenge/ChallengeContext"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface ChallengeData {
   id: string
@@ -36,6 +37,8 @@ interface ChallengeData {
 const ITEMS_PER_PAGE = 9
 
 export function CardsChallenges() {
+  const { push } = useRouter()
+
   const { fetchChallenges, challenges } = useChallenge()
   const [localChallenges, setLocalChallenges] = useState<ChallengeData[]>([])
 
@@ -63,6 +66,10 @@ export function CardsChallenges() {
     return <p>Nenhum desafio encontrado</p>
   }
 
+  const handleChallenge = (id: string) => {
+    push(`/dashboard/challenges/${id}`)
+  }
+
   return (
     <>
       <div className="mt-8 grid gap-4 lg:grid-cols-3 lg:gap-8 xl:grid-cols-3">
@@ -75,7 +82,12 @@ export function CardsChallenges() {
               <CardDescription className="line-clamp-2">
                 {challenge.description}
               </CardDescription>
-              <Button className="mt-4">Iniciar</Button>
+              <Button
+                className="mt-4"
+                onClick={() => handleChallenge(challenge.id)}
+              >
+                Iniciar
+              </Button>
             </CardContent>
             <CardFooter className="gap-2">
               {challenge?.tags?.map((tag, tagIndex) => {

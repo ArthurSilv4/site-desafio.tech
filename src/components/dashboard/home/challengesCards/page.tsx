@@ -54,7 +54,7 @@ export function ChallengesCards() {
   useEffect(() => {
     if (selectedId) {
       axios
-        .get(`https://localhost:7092/challenges/${selectedId}`, {
+        .get(`https://localhost:7092/challenges/all/${selectedId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
