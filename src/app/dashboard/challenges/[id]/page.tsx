@@ -1,11 +1,13 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import { parseCookies } from "nookies"
 import { useEffect, useState } from "react"
 
 interface ChallengeData {
+  id: string
   title: string
   description: string
   author: string
@@ -36,7 +38,13 @@ export default function ChallengesId() {
     }
   }, [id, token])
 
-  console.log(data)
+  const handleStartChallenge = (id: string) => {
+    axios.post(`https://localhost:7092/challenges/cloneChallenge/${id}`, null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  }
 
   return (
     <div>
@@ -46,6 +54,10 @@ export default function ChallengesId() {
           <h3>{data.author}</h3>
           <h3>{data.title}</h3>
           <p>{data.description}</p>
+
+          <Button onClick={() => handleStartChallenge(data.id)}>
+            Start Challenge
+          </Button>
         </div>
       )}
     </div>
