@@ -17,12 +17,19 @@ interface ChallengeData {
   tags: string[]
 }
 
+interface CreateChallengeData {
+  title: string
+  description: string
+  startDate: string
+}
+
 const ChallengeContext = createContext<
   | {
       challenges: ChallengeData[]
       setChallenges: React.Dispatch<React.SetStateAction<ChallengeData[]>>
       fetchAllChallenges: () => void
       fetchChallenges: () => void
+      createChallenge: (data: CreateChallengeData) => void
     }
   | undefined
 >(undefined)
@@ -79,9 +86,41 @@ export const ChallengeProvider: React.FC<ChallengeProviderProps> = ({
     }
   }
 
+  function createChallenge({
+    title,
+    description,
+    startDate,
+  }: CreateChallengeData) {
+    if (token) {
+      axios
+        .post(
+          "https://localhost:7092/challenges/create",
+          {
+            title,
+            description,
+            startDate,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .catch((error) => {
+          console.error("Error creating challenge:", error)
+        })
+    }
+  }
+
   return (
     <ChallengeContext.Provider
-      value={{ challenges, setChallenges, fetchAllChallenges, fetchChallenges }}
+      value={{
+        challenges,
+        setChallenges,
+        fetchAllChallenges,
+        fetchChallenges,
+        createChallenge,
+      }}
     >
       {children}
     </ChallengeContext.Provider>

@@ -10,6 +10,7 @@ import {
   PowerOff,
   MessageSquare,
   Heart,
+  SquarePlus,
 } from "lucide-react"
 
 import {
@@ -53,6 +54,11 @@ const menuItems = [
     title: "Comunidade",
     icon: Earth,
     href: "/dashboard/community",
+  },
+  {
+    title: "Criar Desafio",
+    icon: SquarePlus,
+    href: "/dashboard/createChallenge",
   },
 ]
 
