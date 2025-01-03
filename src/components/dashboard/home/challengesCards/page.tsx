@@ -14,6 +14,15 @@ import { DayPickerProvider } from "react-day-picker"
 import { useRouter } from "next/navigation"
 import { parseCookies } from "nookies"
 import axios from "axios"
+import Link from "next/link"
+import { Expand } from "lucide-react"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@radix-ui/react-accordion"
+import { Checkbox } from "@radix-ui/react-checkbox"
 interface ChallengeData {
   id: string
   title: string
@@ -80,17 +89,51 @@ export function ChallengesCards() {
           className="h-[90%] w-[100%] rounded bg-background p-4 md:w-[80%] 2xl:w-[60%]"
           onClick={(e) => e.stopPropagation()}
         >
-          {data && (
+          <div className="flex items-center justify-between">
             <div>
-              {Object.entries(data).map(([key, value]) => (
-                <div key={key} className="mb-2">
-                  <strong>{key}:</strong> {value as React.ReactNode}
-                </div>
-              ))}
+              <h2 className="text-2xl font-semibold">{data?.title}</h2>
+              <span>Criador: {data?.author}</span>
             </div>
-          )}
 
-          <Button onClick={closeOverlay}>Close</Button>
+            <Link href={`/dashboard/${id}`}>
+              <Button size="icon">
+                <Expand />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="mt-4 flex flex-col gap-2">
+            <span>{data?.status}</span>
+            <span>Inicio: {data?.startDate}</span>
+            <span>Fim: {data?.endDate}</span>
+
+            <Accordion type="single" collapsible>
+              <AccordionItem value="1">
+                <AccordionTrigger className="cursor-pointer font-semibold">
+                  Todas as datas:
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="flex flex-col">
+                    {data?.challengeDates?.map(
+                      (date: string, index: number) => (
+                        <div key={index} className="m-2">
+                          <span>{date}</span>
+                          <p>pequeno paragrafo falado oq fazer no dia</p>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            <div>
+              <span>Finalizado:</span>
+
+              <h3>Descrição:</h3>
+              <p>{data?.description}</p>
+            </div>
+          </div>
         </div>
       </div>
     )
