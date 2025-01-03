@@ -64,6 +64,7 @@ const menuItems = [
 
 export default function AppSideBar() {
   const { isLoggedIn } = useAuth()
+  const { signOut } = useAuth()
   const pathname = usePathname()
 
   if (isLoggedIn() && pathname.startsWith("/dashboard")) {
@@ -119,7 +120,7 @@ export default function AppSideBar() {
               </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <Link href="/dashboard/profile">
+              <Link href="/dashboard/profile" onClick={signOut}>
                 <SidebarMenuButton className="text-red-400 hover:text-red-500">
                   <PowerOff></PowerOff>
                   <span>Sair</span>
